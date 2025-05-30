@@ -2,9 +2,9 @@ name: Laravel CI/CD (MySQL)
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   build-test:
@@ -14,7 +14,7 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: laracicd
+          MYSQL_DATABASE: itech
           MYSQL_USER: polindra
           MYSQL_PASSWORD: polindra
         ports:
@@ -123,15 +123,15 @@ jobs:
             --exclude='storage' \
             --exclude='.git' \
             --exclude='.github' \
-            ~/laravel-temp-deploy/ /var/www/laravel-app/
+            ~/laravel-temp-deploy/ /var/www/laravel-d4rpl2c-kelompok5/
 
           # Set permissions
-          sudo chown -R www-data:www-data /var/www/laravel-app
-          sudo chmod -R 755 /var/www/laravel-app/storage
-          sudo chmod -R 755 /var/www/laravel-app/bootstrap/cache
+          sudo chown -R www-data:www-data /var/www/laravel-d4rpl2c-kelompok5
+          sudo chmod -R 755 /var/www/laravel-d4rpl2c-kelompok5/storage
+          sudo chmod -R 755 /var/www/laravel-d4rpl2c-kelompok5/bootstrap/cache
 
           # Run deployment commands
-          cd /var/www/laravel-app
+          cd /var/www/laravel-d4rpl2c-kelompok5
           sudo -u www-data composer install --optimize-autoloader --no-dev
           sudo -u www-data php artisan config:cache
           sudo -u www-data php artisan route:cache
